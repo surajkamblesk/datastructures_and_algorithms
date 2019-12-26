@@ -116,25 +116,40 @@ _Bool SearchNode(struct node *start)
         {
             if (temp->data != key)
             {
-               return false;
+                return false;
             }
             else
             {
                 return true;
             }
-        temp = temp ->next;
-           
+            temp = temp->next;
         }
     }
 }
 
+int GetNthElement(struct node *start, int index)
+{
+    temp = start;
+    int count = 1;
+    while (temp->next != NULL)
+    {
+        if (index != count)
+        {
+            return -1;
+        }
+        else
+        {
+            return (temp->data);
+        }
+    }
+}
 void main()
 {
-    int ch, data;
+    int ch, data, index_key,nth;
     struct node *start = NULL;
     while (1)
     {
-        printf("\n\n1. display \n2. Insert front\n3. Insert Rear\n4. delete rear \n 5. delete front\n 6. lentgh of list\n7. Search Nodes");
+        printf("\n\n1. display \n2. Insert front\n3. Insert Rear\n4. delete rear \n 5. delete front\n 6. lentgh of list\n7. Search Nodes\n8. Get Nth Element\n");
         scanf("%d", &ch);
         switch (ch)
         {
@@ -172,6 +187,16 @@ void main()
             else
             {
                 printf("node not present\n");
+            }
+            break;
+        case 8:
+            printf("enter the index vakue\n");
+            scanf("%d", &index_key);
+            if (nth = (GetNthElement(start, index_key) != -1))
+            {
+                printf(" Nth Element :%d\n",nth );
+            }else{
+                printf("not present in list");
             }
             break;
         }
