@@ -76,7 +76,7 @@ struct node *DeleteRear(struct node *start)
     {
         temp = start;
         prev = start;
-        while (temp = !NULL)
+        while (temp->next != NULL)
         {
             prev = temp;
             temp = temp->next;
@@ -95,8 +95,9 @@ int LenghtOfList(struct node *start)
     {
         length++;
     }
-    return length;
+    return ++length;
 }
+
 void main()
 {
     int ch, data;
