@@ -1,3 +1,4 @@
+//bruteforce string matching algorithm (naive string matching)
 #include<stdio.h>
 #include<string.h>
 
