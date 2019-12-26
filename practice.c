@@ -60,55 +60,43 @@ struct node *DeleteFront(struct node *start)
     {
         temp = start;
         start = start->next;
-        free(temp);
     }
-
+    free(temp);
     return start;
 }
 
-struct node* DeleteRear(struct node* start)
+struct node *DeleteRear(struct node *start)
 {
-    struct node* temp, *prev;
-    if(start == NULL){
-        printf("nothing to delete\n");
-    }
-    else{
-       temp = start;
-       prev = start;
-        while(temp =! NULL){
-            prev = temp;
-            temp = temp->next;
-        }
-        prev->next = NULL;
-
-    }
-    free(temp);
-}
-
-int LenghtOfList(struct node *start)
-{
-    struct node *temp;
-    int lenght = 0;
-    if (start = NULL)
+    struct node *temp, *prev;
+    if (start == NULL)
     {
-        printf("list is empty\n");
+        printf("nothing to delete\n");
     }
     else
     {
         temp = start;
-        while (temp != NULL)
+        prev = start;
+        while (temp = !NULL)
         {
-            printf("before %d\n", lenght);
-            lenght = lenght + 1;
-            printf("after %d\n", lenght);
+            prev = temp;
             temp = temp->next;
         }
+        prev->next = NULL;
     }
-    return lenght;
+    free(temp);
+    return start;
 }
 
-
-
+int LenghtOfList(struct node *start)
+{
+    struct node *cur;
+    int length = 0;
+    for (cur = start; cur->next != NULL; cur = cur->next)
+    {
+        length++;
+    }
+    return length;
+}
 void main()
 {
     int ch, data;
@@ -135,7 +123,7 @@ void main()
             start = InsertRear(start, data);
             break;
         case 4:
-            DeleteRear(start);
+            start = DeleteRear(start);
             break;
         case 5:
             start = DeleteFront(start);
