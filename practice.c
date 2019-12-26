@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 struct node
 {
     int data;
@@ -98,13 +99,42 @@ int LenghtOfList(struct node *start)
     return ++length;
 }
 
+_Bool SearchNode(struct node *start)
+{
+    int key;
+
+    if (start == NULL)
+    {
+        printf("empty list\n");
+    }
+    else
+    {
+        printf("enter the element to search\n");
+        scanf("%d", &key);
+        temp = start;
+        while (temp->next != NULL)
+        {
+            if (temp->data != key)
+            {
+               return false;
+            }
+            else
+            {
+                return true;
+            }
+        temp = temp ->next;
+           
+        }
+    }
+}
+
 void main()
 {
     int ch, data;
     struct node *start = NULL;
     while (1)
     {
-        printf("\n\n1. display \n2. Insert front\n3. Insert Rear\n4. delete rear \n 5. delete front\n 6. lentgh of list\n");
+        printf("\n\n1. display \n2. Insert front\n3. Insert Rear\n4. delete rear \n 5. delete front\n 6. lentgh of list\n7. Search Nodes");
         scanf("%d", &ch);
         switch (ch)
         {
@@ -132,6 +162,17 @@ void main()
 
         case 6:
             printf("lenght of the list : %d\n", LenghtOfList(start));
+            break;
+
+        case 7:
+            if (SearchNode(start))
+            {
+                printf("node present\n");
+            }
+            else
+            {
+                printf("node not present\n");
+            }
             break;
         }
     }
